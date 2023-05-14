@@ -4,6 +4,7 @@ package com.dauweb.dauweb.service;
 import com.dauweb.dauweb.dto.ArticleDto;
 import com.dauweb.dauweb.entity.Article;
 import com.dauweb.dauweb.entity.type.SearchType;
+import com.dauweb.dauweb.repository.ArticleRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -16,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @Service
 public class ArticleService {
-//    private final ArticleRepository articleRepository;
+    private final ArticleRepository articleRepository;
 
 
     @Transactional(readOnly = true)

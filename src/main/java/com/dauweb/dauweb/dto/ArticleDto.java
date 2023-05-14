@@ -14,8 +14,7 @@ public record ArticleDto(
         String CreatedBy,
         LocalDateTime CreatedAt,
         int seq,
-        String password,
-        Set<ArticleCommentDto> articleCommentDtos
+        String password
 ) {
 
 
@@ -27,10 +26,7 @@ public record ArticleDto(
                 entity.getCreatedBy(),
                 entity.getCreatedAt(),
                 entity.getSeq(),
-                entity.getPassword(),
-                entity.getArticleComments().stream()
-                        .map(ArticleCommentDto::from)
-                        .collect(Collectors.toCollection(LinkedHashSet::new))
+                entity.getPassword()
         );
     }
 }
