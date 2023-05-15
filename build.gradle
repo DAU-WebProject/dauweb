@@ -21,6 +21,7 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'com.h2database:h2:1.4.200'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'com.h2database:h2'
@@ -57,4 +58,9 @@ sourceSets {
 // gradle clean 시에 QClass 디렉토리 삭제
 clean {
 	delete file(generated)
+}
+
+tasks.withType(JavaCompile) {
+	options.compilerArgs << "-source" << "17"
+	options.compilerArgs << "-target" << "17"
 }
