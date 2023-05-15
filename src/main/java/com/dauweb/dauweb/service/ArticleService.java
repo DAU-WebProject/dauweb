@@ -11,7 +11,7 @@ public class ArticleService {
     private ArticleRepository articleRepository;
 
     public boolean saveArticle(Article article) {
-        // 빈값 체크
+        //빈값 체크
         if (article.getTitle() == null || article.getTitle().trim().isEmpty() ||
                 article.getContent() == null || article.getContent().trim().isEmpty() ||
                 article.getPassword() == null || article.getPassword().trim().isEmpty()) {
