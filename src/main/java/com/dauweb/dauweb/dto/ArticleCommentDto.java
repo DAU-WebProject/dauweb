@@ -6,7 +6,6 @@ import lombok.Getter;
 import java.time.LocalDateTime;
 
 
-@Getter
 public record ArticleCommentDto(
         Long id,
         Long articleId,

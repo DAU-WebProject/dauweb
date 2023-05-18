@@ -12,7 +12,6 @@ public record ArticleDto(
         String title,
         String content,
         LocalDateTime CreatedAt,
-        int seq,
         String password
 ) {
 
@@ -23,7 +22,6 @@ public record ArticleDto(
                 entity.getTitle(),
                 entity.getContent(),
                 entity.getCreatedAt(),
-                entity.getSeq(),
                 entity.getPassword()
         );
     }

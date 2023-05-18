@@ -16,12 +16,12 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ArticleRepository extends
-        JpaRepository<Article,Long>,        // 실제 DB에 Access 하여 쿼리를 수행하는 등의 역할
-        QuerydslPredicateExecutor<Article>, // Article 안에있는 기본 검색기능 추가 (부분검색이 안됨)
-        QuerydslBinderCustomizer<QArticle>  // 부분검색이 안되는 것을 해결하기 위해 커스터마이징을 함
+        JpaRepository<Article,Long>        // 실제 DB에 Access 하여 쿼리를 수행하는 등의 역할
+//        QuerydslPredicateExecutor<Article>, // Article 안에있는 기본 검색기능 추가 (부분검색이 안됨)
+//        QuerydslBinderCustomizer<QArticle>  // 부분검색이 안되는 것을 해결하기 위해 커스터마이징을 함
 {
-    Page<Article> findByTitleContaining(String title, Pageable pageable);
-    Page<Article> findByContentContaining(String content, Pageable pageable);
+    Page<Article> findByTitleContainingIgnoreCaseOrderByCreatedAtDesc(String title, Pageable pageable);
+    Page<Article> findByContentContainingIgnoreCaseOrderByCreatedAtDesc(String content, Pageable pageable);
 
 }
 
