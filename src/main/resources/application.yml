@@ -6,6 +6,9 @@ spring:
 
   main:
     allow-circular-references: true
+  h2:
+    console:
+      enabled: true
   datasource:
     url: jdbc:h2:tcp://localhost/~/dauweb
     username: sa
@@ -13,10 +16,15 @@ spring:
     driver-class-name: org.h2.Driver
 
   jpa:
+    defer-datasource-initialization: true
     hibernate:
       ddl-auto: create
     properties:
       hibernate:
         format_sql: true # sql ? ??
+  sql.init.mode: always
 logging.level:
   org.hibernate.SQL: trace # ??? ??? sql ??
+  org.springframework.jdbc.core: INFO
+
+
