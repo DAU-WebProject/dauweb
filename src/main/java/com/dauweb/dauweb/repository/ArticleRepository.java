@@ -1,6 +1,7 @@
 package com.dauweb.dauweb.repository;
 
 
+
 import com.dauweb.dauweb.entity.Article;
 import com.dauweb.dauweb.entity.QArticle;
 import com.querydsl.core.types.dsl.DateTimeExpression;
@@ -23,4 +24,5 @@ public interface ArticleRepository extends
     Page<Article> findByContentContaining(String content, Pageable pageable);
 
 }
+
 

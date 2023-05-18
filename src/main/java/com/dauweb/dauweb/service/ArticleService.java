@@ -17,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @Service
 public class ArticleService {
+    @Autowired
     private final ArticleRepository articleRepository;
 
 
@@ -32,6 +33,17 @@ public class ArticleService {
             case TITLE -> articleRepository.findByTitleContaining(searchKeyword, pageable).map(ArticleDto::from);
             case CONTENT -> articleRepository.findByContentContaining(searchKeyword, pageable).map(ArticleDto::from);
         };
+    }
+
+        public boolean saveArticle(Article article) {
+        //빈값 체크
+        if (article.getTitle() == null || article.getTitle().trim().isEmpty() ||
+                article.getContent() == null || article.getContent().trim().isEmpty() ||
+                article.getPassword() == null || article.getPassword().trim().isEmpty()) {
+            return false;
+        }
+        articleRepository.save(article);
+        return true;
     }
 }
 

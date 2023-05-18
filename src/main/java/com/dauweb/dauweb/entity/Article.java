@@ -4,6 +4,7 @@ package com.dauweb.dauweb.entity;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
@@ -31,14 +32,13 @@ public class Article {
     @Column(nullable = false)
     private LocalDateTime createdAt; // 작성시간
 
-    @Column(nullable = false)
-    private int seq; // 정렬순서
-
     @ToString.Exclude
     @OrderBy("id")
     @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
     private final Set<ArticleComment> articleComments = new LinkedHashSet<>();
 
+
+    @Setter
     @Column(nullable = false)
     private String password; // 수정 삭제 시 pw
 

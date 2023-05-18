@@ -1,7 +1,5 @@
 package com.dauweb.dauweb.controller;
 
-
-
 import com.dauweb.dauweb.dto.ArticleDto;
 import com.dauweb.dauweb.entity.type.SearchType;
 import com.dauweb.dauweb.service.ArticleService;
@@ -43,6 +41,19 @@ public class ArticleController {
         map.addAttribute("paginationBarNumbers",barNumbers);
 
         return "articles/index";
+    }
+
+    @GetMapping("/")
+    public String write() {
+        return "articles/index";
+    }
+
+    @PostMapping("/write")
+    public String post(@ModelAttribute Article article) {
+        if (!articleService.saveArticle(article)) {
+            return "redirect:/error";
+        }
+        return "redirect:/";
     }
 
 

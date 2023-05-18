@@ -1,4 +1,9 @@
 spring:
+  mvc:
+    view:
+      prefix:
+      suffix: .html
+
   main:
     allow-circular-references: true
   datasource:
