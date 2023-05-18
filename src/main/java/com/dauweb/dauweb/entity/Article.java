@@ -27,9 +27,6 @@ public class Article {
     @Column(nullable = false, length = 10000)
     private String content; // 내용
 
-    @Column(nullable = false)
-    private String CreatedBy;
-
     @CreatedDate
     @Column(nullable = false)
     private LocalDateTime createdAt; // 작성시간
