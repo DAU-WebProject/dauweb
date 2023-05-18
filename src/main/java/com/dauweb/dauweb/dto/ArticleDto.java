@@ -11,7 +11,6 @@ public record ArticleDto(
         Long id,
         String title,
         String content,
-        String CreatedBy,
         LocalDateTime CreatedAt,
         int seq,
         String password
@@ -23,7 +22,6 @@ public record ArticleDto(
                 entity.getId(),
                 entity.getTitle(),
                 entity.getContent(),
-                entity.getCreatedBy(),
                 entity.getCreatedAt(),
                 entity.getSeq(),
                 entity.getPassword()
