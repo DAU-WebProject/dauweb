@@ -1,4 +1,4 @@
-package src.main.java.com.dauweb.dauweb.service;
+package com.dauweb.dauweb.service;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
