@@ -1,8 +1,7 @@
 package com.dauweb.dauweb.controller;
 
-
-
 import com.dauweb.dauweb.dto.ArticleDto;
+import com.dauweb.dauweb.entity.Article;
 import com.dauweb.dauweb.entity.type.SearchType;
 import com.dauweb.dauweb.service.ArticleService;
 import com.dauweb.dauweb.service.PaginationService;
@@ -13,10 +12,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,7 +25,7 @@ public class ArticleController {
     private final ArticleService articlesService;
     private final PaginationService paginationService;
 
-    @GetMapping
+    @GetMapping()
     public String articles(
             @RequestParam(required = false) SearchType searchType,
             @RequestParam(required = false) String searchValue,
@@ -43,6 +39,19 @@ public class ArticleController {
         map.addAttribute("paginationBarNumbers",barNumbers);
 
         return "articles/index";
+    }
+
+    @GetMapping("/")
+    public String write() {
+        return "articles/index";
+    }
+
+    @PostMapping("/write")
+    public String post(@ModelAttribute Article article) {
+        if (!articlesService.saveArticle(article)) {
+            return "redirect:/error";
+        }
+        return "redirect:/";
     }
 
 

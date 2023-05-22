@@ -26,13 +26,9 @@ public class QArticle extends EntityPathBase<Article> {
 
     public final DateTimePath<java.time.LocalDateTime> createdAt = createDateTime("createdAt", java.time.LocalDateTime.class);
 
-    public final StringPath CreatedBy = createString("CreatedBy");
-
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
     public final StringPath password = createString("password");
-
-    public final NumberPath<Integer> seq = createNumber("seq", Integer.class);
 
     public final StringPath title = createString("title");
 

@@ -6,7 +6,7 @@ import lombok.Getter;
 import java.time.LocalDateTime;
 
 
-//@Getter //클래스 enum 에서만 Getter 사용 가능하다네요 승지씨
+@Getter 
 public record ArticleCommentDto(
         Long id,
         Long articleId,

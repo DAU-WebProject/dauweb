@@ -7,6 +7,7 @@ import com.dauweb.dauweb.entity.type.SearchType;
 import com.dauweb.dauweb.repository.ArticleRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @Service
 public class ArticleService {
+    @Autowired
     private final ArticleRepository articleRepository;
 
 
@@ -29,9 +31,20 @@ public class ArticleService {
 
         }
         return switch (searchType) {
-            case TITLE -> articleRepository.findByTitleContaining(searchKeyword, pageable).map(ArticleDto::from);
-            case CONTENT -> articleRepository.findByContentContaining(searchKeyword, pageable).map(ArticleDto::from);
+            case TITLE -> articleRepository.findByTitleContainingIgnoreCaseOrderByCreatedAtDesc(searchKeyword, pageable).map(ArticleDto::from);
+            case CONTENT -> articleRepository.findByContentContainingIgnoreCaseOrderByCreatedAtDesc(searchKeyword, pageable).map(ArticleDto::from);
         };
+    }
+
+        public boolean saveArticle(Article article) {
+        //빈값 체크
+        if (article.getTitle() == null || article.getTitle().trim().isEmpty() ||
+                article.getContent() == null || article.getContent().trim().isEmpty() ||
+                article.getPassword() == null || article.getPassword().trim().isEmpty()) {
+            return false;
+        }
+        articleRepository.save(article);
+        return true;
     }
 }
 
