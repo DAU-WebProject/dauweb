@@ -29,6 +29,7 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
 	implementation files('lib/jsoup-1.16.1.jar')
+	implementation files('selenium-server-4.9.0.jar')
 
 	// queryDSL 설정
 	implementation "com.querydsl:querydsl-jpa"
