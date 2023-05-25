@@ -27,6 +27,7 @@ dependencies {
 	runtimeOnly 'com.h2database:h2'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'org.seleniumhq.selenium:selenium-java:4.1.4'
 
 	implementation files('lib/jsoup-1.16.1.jar')
 

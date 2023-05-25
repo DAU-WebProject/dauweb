@@ -10,7 +10,7 @@ import java.lang.String;
 public class sitting3 {
     public static void main(String[] args) {
         //드라이버 설치 후 경로 수정 필요
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\김은서\\Desktop\\project\\lib\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "lib\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.get("http://library.donga.ac.kr/libaray-services/facilities/reading-room/");
         try {

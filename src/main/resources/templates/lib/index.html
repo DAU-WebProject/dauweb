@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lib Index</title>
+</head>
+<body>
+<h1>Lib Index</h1>
+<h2>Title: <span th:text="${libdto.title}"></span></h2>
+<h2>Sub Title: <span th:text="${libdto.subTitle}"></span></h2>
+
+<h3>Header:</h3>
+<ul>
+    <li th:each="header : ${libdto.header}" th:text="${header}"></li>
+</ul>
+
+<h3>T Body:</h3>
+<ul>
+    <li th:each="tBody : ${libdto.t_body}" th:text="${tBody}"></li>
+</ul>
+
+<h3>Links:</h3>
+<ul>
+    <li th:each="link : ${libdto.links}" th:text="${link}"></li>
+</ul>
+</body>
+</html>
