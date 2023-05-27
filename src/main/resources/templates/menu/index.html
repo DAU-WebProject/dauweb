@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu Index</title>
+</head>
+<body>
+<h1>Menu Index</h1>
+<h2>Title: <span th:text="${lunchdto.location1}"></span></h2>
+
+<h3>1. <span th:text="${lunchdto.SPLM_name}"></span></h3>
+<ul>
+    <li th:each="SPLM : ${lunchdto.SPLM}" th:text="${SPLM}"></li>
+</ul>
+
+<h3>2. <span th:text="${lunchdto.SSLM_name}"></span></h3>
+<ul>
+    <li th:each="SSLM : ${lunchdto.SSLM}" th:text="${SSLM}"></li>
+</ul>
+
+<h3>3. <span th:text="${lunchdto.SLLM_name}"></span></h3>
+<ul>
+    <li th:each="SLLM : ${lunchdto.SLLM}" th:text="${SLLM}"></li>
+</ul>
+
+<h2>Title: <span th:text="${lunchdto.location2}"></span></h2>
+
+<h3>1. <span th:text="${lunchdto.BGLM_name}"></span></h3>
+<ul>
+    <li th:each="BGLM : ${lunchdto.BGLM}" th:text="${BGLM}"></li>
+</ul>
+
+<h3>2. <span th:text="${lunchdto.BTLM_name}"></span></h3>
+<ul>
+    <li th:each="BTLM : ${lunchdto.BTLM}" th:text="${BTLM}"></li>
+</ul>
+</body>
+</html>
