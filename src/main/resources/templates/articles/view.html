@@ -1,11 +1,18 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <title>${title}</title>
-        <meta charset="utf-8"/>
-    </head>
-    <body>
-        ${title}
-        ${content}
+<head>
+    <title>Article View</title>
+</head>
+<body>
+<h1>Article View</h1>
 
-    </body>
+<div>
+    <h2>Title: <span th:text="${title}"></span></h2>
+    <p>Content: <span th:text="${content}"></span></p>
+    <p>ID: <span th:text="${id}"></span></p>
+    <p>Created At: <span th:text="${createdAt}"></span></p>
+    <p>Password: <span th:text="${password}"></span></p>
+</div>
+
+</body>
 </html>

@@ -11,7 +11,7 @@ public record ArticleDto(
         Long id,
         String title,
         String content,
-        LocalDateTime CreatedAt,
+        LocalDateTime createdAt,
         String password
 ) {
 

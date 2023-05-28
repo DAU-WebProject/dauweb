@@ -14,14 +14,11 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
-
 @Getter
+@Setter
 @ToString
 @Entity
 @NoArgsConstructor

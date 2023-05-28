@@ -3,8 +3,8 @@ package com.dauweb.dauweb.service;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.BDDMockito.*;
-import static org.mockito.Mockito.*;
 
+import com.dauweb.dauweb.repository.ArticleRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -16,7 +16,6 @@ import org.springframework.data.domain.Pageable;
 
 import com.dauweb.dauweb.dto.ArticleDto;
 import com.dauweb.dauweb.entity.Article;
-import com.dauweb.dauweb.entity.ArticleRepository;
 import com.dauweb.dauweb.entity.type.SearchType;
 
 @ExtendWith(MockitoExtension.class)
