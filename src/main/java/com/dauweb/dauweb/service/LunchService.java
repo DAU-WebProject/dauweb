@@ -25,7 +25,7 @@ public class LunchService {
         LocalDate today = LocalDate.now(); // 현재 날짜
         //LocalDate tom = LocalDate.of(2023,05,30); //주말일 경우 확인용 날짜
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
-        String url = "https://donga.ac.kr/gzSub_007005005.aspx?DT=" + today.format(formatter) + "#mt";
+        String url = "http://donga.ac.kr/gzSub_007005005.aspx?DT=" + today.format(formatter) + "#mt";
         Connection connection = Jsoup.connect(url);
         Document doc = connection.get();
         try{
