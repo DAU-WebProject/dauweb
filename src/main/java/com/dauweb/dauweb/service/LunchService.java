@@ -76,50 +76,58 @@ public class LunchService {
         */
 
         String location1 = new String("승학캠퍼스");
-        String SPLM_name = new String();
-        String SSLM_name = new String();
-        String SLLM_name = new String();
+        String SPLM_name = new String("교수회관");
+        String SSLM_name = new String("학생회관");
+        String SLLM_name = new String("도서관");
         List<String> SPLM = new ArrayList<>();
         List<String> SSLM1 = new ArrayList<>();
         List<String> SSLM2 = new ArrayList<>();
+        List<String> SSLM = new ArrayList<>();
         List<String> SLLM = new ArrayList<>();
 
         // 승학캠퍼스 자료 리스트로 보내기 위해 자르는 구간
-        for (int i = 0; i < SHLunch.size();i++){
-            if(i == 1){
-                SPLM_name = "교수회관";
-                SPLM = Arrays.asList(SHLunch.get(i).split(" "));
-            }
-            if(i == 2){
-                SSLM_name = "학생회관";
-                SSLM1 = Arrays.asList(SHLunch.get(i).split(" "));
-            }
-            if(i == 3){
-                SSLM2 = Arrays.asList(SHLunch.get(i).split(" "));
-
-            }
-            if(i == 4){
-                SLLM_name = "도서관";
-                SLLM = Arrays.asList(SHLunch.get(i).split(" "));
-            }
+        if (SHLunch.size()==1){
+            SPLM.add("휴일");
+            SSLM.add("휴일");
+            SLLM.add("휴일");
         }
-        List<String> SSLM = Stream.concat(SSLM1.stream(), SSLM2.stream()).collect(Collectors.toList());
+        else {
+            for (int i = 0; i < SHLunch.size(); i++) {
+                if (i == 1) {
+                    SPLM = Arrays.asList(SHLunch.get(i).split(" "));
+                }
+                if (i == 2) {
+                    SSLM1 = Arrays.asList(SHLunch.get(i).split(" "));
+                }
+                if (i == 3) {
+                    SSLM2 = Arrays.asList(SHLunch.get(i).split(" "));
+
+                }
+                if (i == 4) {
+                    SLLM = Arrays.asList(SHLunch.get(i).split(" "));
+                }
+            }
+            SSLM = Stream.concat(SSLM1.stream(), SSLM2.stream()).collect(Collectors.toList());
+        }
 
         // 부민캠퍼스 자료 리스트로 보내기 위해 자르는 구간
         String location2 = new String("부민캠퍼스");
-        String BGLM_name = new String();
-        String BTLM_name = new String();
+        String BGLM_name = new String("국제회관 기숙사");
+        String BTLM_name = new String("교직원");
         List<String> BGLM = new ArrayList<>();
         List<String> BTLM = new ArrayList<>();
-
-        for (int i = 0; i < BMLunch.size();i++){
-            if(i == 0){
-                BGLM_name = "국제회관 기숙사";
-                BGLM = Arrays.asList(BMLunch.get(i).split(" "));
-            }
-            if(i == 1) {
-                BTLM_name = "교직원";
-                BTLM = Arrays.asList(BMLunch.get(i).split(" "));
+        if(BMLunch.size() == 1){
+            BGLM.add("휴일");
+            BTLM.add("휴일");
+        }
+        else {
+            for (int i = 0; i < BMLunch.size(); i++) {
+                if (i == 0) {
+                    BGLM = Arrays.asList(BMLunch.get(i).split(" "));
+                }
+                if (i == 1) {
+                    BTLM = Arrays.asList(BMLunch.get(i).split(" "));
+                }
             }
         }
 
