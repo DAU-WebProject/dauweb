@@ -1,10 +1,10 @@
 package com.dauweb.dauweb.service;
 
-import com.dauweb.dauweb.dto.ArticleDto;
-import com.dauweb.dauweb.entity.Article;
-import com.dauweb.dauweb.entity.type.SearchType;
-import com.dauweb.dauweb.repository.ArticleRepository;
-import com.dauweb.dauweb.service.ArticleService;
+import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.BDDMockito.*;
+import static org.mockito.Mockito.*;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -12,16 +12,12 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 
-import java.time.LocalDateTime;
-
-import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.BDDMockito.*;
+import com.dauweb.dauweb.dto.ArticleDto;
+import com.dauweb.dauweb.entity.Article;
+import com.dauweb.dauweb.entity.ArticleRepository;
+import com.dauweb.dauweb.entity.type.SearchType;
 
 @ExtendWith(MockitoExtension.class)
 public class ArticleServiceTest {

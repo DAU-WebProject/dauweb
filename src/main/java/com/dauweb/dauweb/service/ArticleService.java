@@ -1,17 +1,20 @@
 package com.dauweb.dauweb.service;
 
 
-import com.dauweb.dauweb.dto.ArticleDto;
-import com.dauweb.dauweb.entity.Article;
-import com.dauweb.dauweb.entity.type.SearchType;
-import com.dauweb.dauweb.repository.ArticleRepository;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.dauweb.dauweb.dto.ArticleDto;
+import com.dauweb.dauweb.dto.ArticleResponseDto;
+import com.dauweb.dauweb.entity.Article;
+import com.dauweb.dauweb.entity.ArticleRepository;
+import com.dauweb.dauweb.entity.type.SearchType;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -45,6 +48,12 @@ public class ArticleService {
         }
         articleRepository.save(article);
         return true;
+    }
+
+    public ArticleResponseDto findById(Long id) {
+        Article entity = articleRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다."));
+
+        return new ArticleResponseDto(entity);
     }
 }
 
