@@ -37,13 +37,19 @@ public class ArticleService {
         };
     }
 
-        public boolean saveArticle(Article article) {
+        public boolean saveArticle(ArticleResponseDto articleResponseDto) {
         //빈값 체크
-        if (article.getTitle() == null || article.getTitle().trim().isEmpty() ||
-                article.getContent() == null || article.getContent().trim().isEmpty() ||
-                article.getPassword() == null || article.getPassword().trim().isEmpty()) {
+        if (articleResponseDto.getTitle() == null || articleResponseDto.getTitle().trim().isEmpty() ||
+                articleResponseDto.getContent() == null || articleResponseDto.getContent().trim().isEmpty() ||
+                articleResponseDto.getPassword() == null || articleResponseDto.getPassword().trim().isEmpty()) {
             return false;
         }
+        Article article = Article.builder()
+                .title(articleResponseDto.getTitle())
+                .content(articleResponseDto.getContent())
+                .password(articleResponseDto.getPassword())
+                .build();
+
         articleRepository.save(article);
         return true;
     }

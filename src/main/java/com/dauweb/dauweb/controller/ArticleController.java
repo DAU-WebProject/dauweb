@@ -65,8 +65,8 @@ public class ArticleController {
     }
 
     @PutMapping("/write")
-    public String post(@RequestBody Article article) {
-        if (!articlesService.saveArticle(article)) {
+    public String post(@RequestBody ArticleResponseDto articleResponseDto) {
+        if (!articlesService.saveArticle(articleResponseDto)) {
             return "redirect:/error";
         }
         return "redirect:/";

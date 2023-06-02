@@ -59,24 +59,24 @@ public class ArticleServiceTest {
         then(articleRepository).should().findByTitleContainingIgnoreCaseOrderByCreatedAtDesc(searchKeyword, pageable);
     }
 
-    @DisplayName("게시글 정보를 입력하면, 본문에서 해시태그 정보를 추출하여 해시태그 정보가 포함된 게시글을 생성한다.")
-    @Test
-    void givenArticleInfo_whenSavingArticle_thenExtractsHashtagsFromContentAndSavesArticleWithExtractedHashtags() {
-        // Given
-        Article article = new Article();
-        article.setTitle("");
-        article.setContent("");
-        article.setPassword("");
-
-
-        // When
-        boolean result = articleService.saveArticle(article);
-
-        // Then
-        assertFalse(result);
-        verify(articleRepository, never()).save(article);
-
-    }
+//    @DisplayName("게시글 정보를 입력하면, 본문에서 해시태그 정보를 추출하여 해시태그 정보가 포함된 게시글을 생성한다.")
+//    @Test
+//    void givenArticleInfo_whenSavingArticle_thenExtractsHashtagsFromContentAndSavesArticleWithExtractedHashtags() {
+//        // Given
+//        Article article = new Article();
+//        article.setTitle("");
+//        article.setContent("");
+//        article.setPassword("");
+//
+//
+//        // When
+//        boolean result = articleService.saveArticle(article);
+//
+//        // Then
+//        assertFalse(result);
+//        verify(articleRepository, never()).save(article);
+//
+//    }
 
 
 

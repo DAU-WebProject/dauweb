@@ -7,6 +7,7 @@ import com.dauweb.dauweb.entity.Article;
 import lombok.Getter;
 
 @Getter
+
 public class ArticleResponseDto {
     private Long id;
     private String title;
