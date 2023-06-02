@@ -9,12 +9,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import com.dauweb.dauweb.dto.ArticleDto;
 import com.dauweb.dauweb.dto.ArticleResponseDto;
@@ -69,8 +64,8 @@ public class ArticleController {
         return "articles/index";
     }
 
-    @PostMapping("/write")
-    public String post(@ModelAttribute Article article) {
+    @PutMapping("/write")
+    public String post(@RequestBody Article article) {
         if (!articlesService.saveArticle(article)) {
             return "redirect:/error";
         }
