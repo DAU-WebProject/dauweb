@@ -18,8 +18,6 @@ function Cafeteria() {
     fetchdata();
   }, []);
   let check = !loading && Object.keys(data).length;
-  console.log(data);
-  console.log(data.length);
   return (
     <div
       style={{

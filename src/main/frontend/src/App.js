@@ -7,6 +7,7 @@ import Library from "./screens/library";
 import NotFound from "./screens/notFound";
 import FreeBoardMain from "./screens/freeBoardMain";
 import FreeBoardWrite from "./screens/freeBoardWrite";
+import FreeBoardDetail from "./screens/freeBoardDetail";
 
 function App() {
   return (
@@ -43,7 +44,7 @@ function App() {
           <Route path="/cafeteria" element={<Cafeteria />} />
           <Route path="/freeBoardMain" element={<FreeBoardMain />} />
           <Route path="/freeBoardWrite" element={<FreeBoardWrite />} />
-          {/* <Route path="*" element={<NotFound />} /> */}
+          <Route path="/freeBoardDetail" Component={FreeBoardDetail} />
         </Routes>
       </div>
       <div style={{ display: "flex", flex: 1 }}></div>

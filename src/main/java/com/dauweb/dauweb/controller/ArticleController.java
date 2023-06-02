@@ -26,14 +26,15 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @RequestMapping("/articles") // 기본 주소
-@Controller
+// @Controller
+@RestController
 public class ArticleController {
 
     private final ArticleService articlesService;
     private final PaginationService paginationService;
 
     @GetMapping()
-    public String articles(
+    public Page<ArticleDto> articles(
             @RequestParam(required = false) SearchType searchType,
             @RequestParam(required = false) String searchValue,
             @PageableDefault(size=10, sort = "createdAt",direction = Sort.Direction.DESC) Pageable pageable,
@@ -45,11 +46,11 @@ public class ArticleController {
         map.addAttribute("articles", articles);
         map.addAttribute("paginationBarNumbers",barNumbers);
 
-        return "articles/index";
+        return articles;
     }
 
     @GetMapping("/view/{id}")
-    public String articleView(@PathVariable Long id, Model model) {
+    public ArticleResponseDto articleView(@PathVariable Long id, Model model) {
         ArticleResponseDto dto = articlesService.findById(id);
 
         System.out.println(dto.getContent());
@@ -59,7 +60,7 @@ public class ArticleController {
         model.addAttribute("id", dto.getId());
         model.addAttribute("createdAt", dto.getCreatedAt());
         model.addAttribute("password", dto.getPassword());
-        return "articles/view";
+        return dto;
     }
 
     @GetMapping("/write")

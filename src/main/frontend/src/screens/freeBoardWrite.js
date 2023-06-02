@@ -1,23 +1,29 @@
 import { useState } from "react";
 import axios from "axios";
+import { Alert } from "@mui/material";
 
 function FreeBoardWrite() {
-  const [id, setId] = useState("");
   const [pw, setPw] = useState("");
   const [title, setTitle] = useState("");
   const [contents, setContents] = useState("");
 
-  const submit = () => {
+  const submit = async () => {
     const data = {
       title: title,
       content: contents,
       password: pw,
     };
-    console.log(data);
     async function fetchdata() {
       await axios
         .post("/api/articles/write", data)
-        .then((response) => console.log(response))
+        .then((response) => {
+          if (response.status === 200) {
+            alert("정상적으로 등록되었습니다.");
+            window.location.replace("./freeBoardMain");
+          } else {
+            alert("등록에 실패하였습니다.");
+          }
+        })
         .catch((error) => console.log(error));
     }
     fetchdata();
@@ -83,7 +89,7 @@ function FreeBoardWrite() {
             alignItems: "center",
           }}
         >
-          <input
+          <textarea
             style={{
               display: "flex",
               backgroundColor: "white",
@@ -104,28 +110,6 @@ function FreeBoardWrite() {
             alignItems: "center",
           }}
         >
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              marginRight: 35,
-              marginBottom: 20,
-            }}
-          >
-            <h4>아이디</h4>
-            <input
-              style={{
-                height: 20,
-                alignSelf: "center",
-                marginLeft: 10,
-                borderRadius: "10px",
-                borderColor: "white",
-              }}
-              value={id}
-              onChange={(e) => setId(e.target.value)}
-            />
-          </div>
           <div
             style={{
               display: "flex",
