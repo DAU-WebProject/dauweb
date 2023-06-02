@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -69,8 +71,8 @@ public class ArticleController {
         return "articles/index";
     }
 
-    @PostMapping("/write")
-    public String post(@ModelAttribute Article article) {
+    @PutMapping("/write")
+    public String post(@RequestBody ArticleResponseDto article) {
         if (!articlesService.saveArticle(article)) {
             return "redirect:/error";
         }

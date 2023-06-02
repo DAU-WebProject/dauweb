@@ -54,7 +54,6 @@ function FreeBoardMain() {
                 style={{
                   display: "flex",
                   backgroundColor: "white",
-                  border: "1px solid black",
                   borderRadius: "10px",
                   height: 30,
                   width: 60,

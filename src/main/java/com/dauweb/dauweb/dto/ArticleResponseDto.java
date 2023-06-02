@@ -5,8 +5,10 @@ import java.time.LocalDateTime;
 import com.dauweb.dauweb.entity.Article;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
+@NoArgsConstructor
 public class ArticleResponseDto {
     private Long id;
     private String title;
