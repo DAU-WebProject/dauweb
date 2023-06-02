@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -67,11 +68,11 @@ public class ArticleController {
     }
 
     @PostMapping("/write")
-    public String post(@RequestBody ArticleResponseDto articleResponseDto) throws IOException {
+    public ResponseEntity<?> post(@RequestBody ArticleResponseDto articleResponseDto) throws IOException {
         if (!articlesService.saveArticle(articleResponseDto)) {
-            return "redirect:/error";
+            return ResponseEntity.ok(false);
         }
-        return "redirect:/articles";
+        return ResponseEntity.ok(true); // 정상적인 결과가 반환됐을 때, 게시글리스트로 가야 함.
     }
 
 
