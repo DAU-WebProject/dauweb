@@ -37,7 +37,9 @@ public class ArticleService {
         };
     }
 
+
         public boolean saveArticle(ArticleResponseDto articleResponseDto) {
+
         //빈값 체크
         if (articleResponseDto.getTitle() == null || articleResponseDto.getTitle().trim().isEmpty() ||
                 articleResponseDto.getContent() == null || articleResponseDto.getContent().trim().isEmpty() ||
@@ -53,6 +55,7 @@ public class ArticleService {
         articleRepository.save(article);
         return true;
     }
+    
 
     public ArticleResponseDto findById(Long id) {
         Article entity = articleRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다."));

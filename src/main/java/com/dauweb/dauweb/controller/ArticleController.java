@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
+
 import com.dauweb.dauweb.dto.ArticleDto;
 import com.dauweb.dauweb.dto.ArticleResponseDto;
 import com.dauweb.dauweb.entity.Article;
@@ -65,8 +66,10 @@ public class ArticleController {
     }
 
     @PutMapping("/write")
+
     public String post(@RequestBody ArticleResponseDto articleResponseDto) {
         if (!articlesService.saveArticle(articleResponseDto)) {
+
             return "redirect:/error";
         }
         return "redirect:/";

@@ -1,9 +1,80 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Articles</title>
-  </head>
+  <title>Article List</title>
+  <style>
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+  </style>
+</head>
 <body>
-  Articles
-  </body>
+<h1>Article List</h1>
+
+<div class="dropdown">
+  <button class="dropdown-button">Dropdown</button>
+  <div class="dropdown-content">
+    <a href="?searchType=title">Title</a>
+    <a href="?searchType=content">Content</a>
+  </div>
+</div>
+
+<input type="text" id="search-input">
+<button id="search-button">Search</button>
+
+<table>
+  <thead>
+  <tr>
+    <th>Title</th>
+    <th>Content</th>
+    <th>Created At</th>
+  </tr>
+  </thead>
+  <tbody>
+  <!-- 여기에 반복문으로 게시글 목록을 출력하는 코드를 추가하세요 -->
+  <!-- 예시: articles 배열을 사용하여 게시글 목록 출력 -->
+
+  <tr th:each="article : ${articles.content}">
+      <td th:text="${article.title}"></td>
+      <td th:text="${article.content}"></td>
+      <td th:text="${article.createdAt}"></td>
+  </tr>
+
+  </tbody>
+</table>
+
+<div>
+  <!-- 페이지네이션 링크 -->
+  <ul>
+    <li th:each="pageNum : ${paginationBarNumbers}">
+      <a th:href="@{'/?page=' + ${pageNum}}">[[${pageNum}]]</a>
+    </li>
+  </ul>
+</div>
+
+<script>
+  // 검색 버튼 클릭 이벤트 처리
+  document.getElementById("search-button").addEventListener("click", function() {
+    var searchText = document.getElementById("search-input").value;
+    var searchType = document.querySelector('input[name="searchType"]:checked').value;
+    window.location.href = "?searchType=" + searchType + "&searchValue=" + searchText;
+  });
+</script>
+</body>
 </html>
