@@ -1,5 +1,6 @@
 package com.dauweb.dauweb.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
@@ -65,14 +66,12 @@ public class ArticleController {
         return "articles/index";
     }
 
-    @PutMapping("/write")
-
-    public String post(@RequestBody ArticleResponseDto articleResponseDto) {
+    @PostMapping("/write")
+    public String post(@RequestBody ArticleResponseDto articleResponseDto) throws IOException {
         if (!articlesService.saveArticle(articleResponseDto)) {
-
             return "redirect:/error";
         }
-        return "redirect:/";
+        return "redirect:/articles";
     }
 
 

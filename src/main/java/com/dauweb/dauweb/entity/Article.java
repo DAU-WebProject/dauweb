@@ -2,26 +2,23 @@ package com.dauweb.dauweb.entity;
 
 
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OrderBy;
+import javax.persistence.*;
 
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Getter
-@Setter
-@ToString
 @Entity
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@EntityListeners(AuditingEntityListener.class)
 public class Article {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,7 +31,7 @@ public class Article {
     private String content; // 내용
 
     @CreatedDate
-    @Column(nullable = false)
+    @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt; // 작성시간
 
     @ToString.Exclude
@@ -45,11 +42,5 @@ public class Article {
     @Column(nullable = false)
     private String password; // 수정 삭제 시 pw
 
-    @Builder
-    public Article(String title, String content, String password) {
-        this.title = title;
-        this.content = content;
-        this.password = password;
-    }
 
 }

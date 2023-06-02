@@ -16,6 +16,8 @@ import com.dauweb.dauweb.entity.type.SearchType;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+import java.io.IOException;
+
 @Slf4j
 @RequiredArgsConstructor
 @Transactional
@@ -38,25 +40,27 @@ public class ArticleService {
     }
 
 
-        public boolean saveArticle(ArticleResponseDto articleResponseDto) {
+    @Transactional
+    public boolean saveArticle(ArticleResponseDto articleResponseDto) throws IOException {
 
-        //빈값 체크
-        if (articleResponseDto.getTitle() == null || articleResponseDto.getTitle().trim().isEmpty() ||
-                articleResponseDto.getContent() == null || articleResponseDto.getContent().trim().isEmpty() ||
-                articleResponseDto.getPassword() == null || articleResponseDto.getPassword().trim().isEmpty()) {
-            return false;
-        }
-        Article article = Article.builder()
-                .title(articleResponseDto.getTitle())
-                .content(articleResponseDto.getContent())
-                .password(articleResponseDto.getPassword())
-                .build();
+    //빈값 체크
+    if (articleResponseDto.getTitle() == null || articleResponseDto.getTitle().trim().isEmpty() ||
+            articleResponseDto.getContent() == null || articleResponseDto.getContent().trim().isEmpty() ||
+            articleResponseDto.getPassword() == null || articleResponseDto.getPassword().trim().isEmpty()) {
+        return false;
+    }
+    Article article = Article.builder()
+            .title(articleResponseDto.getTitle())
+            .content(articleResponseDto.getContent())
+            .password(articleResponseDto.getPassword())
+            .build();
 
-        articleRepository.save(article);
-        return true;
+    articleRepository.save(article);
+    return true;
     }
     
 
+    @Transactional
     public ArticleResponseDto findById(Long id) {
         Article entity = articleRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다."));
 

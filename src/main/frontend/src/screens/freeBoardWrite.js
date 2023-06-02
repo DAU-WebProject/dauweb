@@ -8,24 +8,15 @@ function FreeBoardWrite() {
   const [contents, setContents] = useState("");
 
   const submit = () => {
-    const formData = new FormData();
-    formData.append("title", title);
-    formData.append("id", id);
-    formData.append("content", contents);
-    formData.append("password", pw);
-    formData.append("CreatedAt", Date.now());
-    // const data = {
-    //   title: title,
-    //   id: id,
-    //   content: contents,
-    //   password: pw,
-    //   CreatedAt: Date.now(),
-    // };
-    console.log(formData);
-    // console.log(data);
+    const data = {
+      title: title,
+      content: contents,
+      password: pw,
+    };
+    console.log(data);
     async function fetchdata() {
       await axios
-        .put("/api/articles/write", formData)
+        .post("/api/articles/write", data)
         .then((response) => console.log(response))
         .catch((error) => console.log(error));
     }
