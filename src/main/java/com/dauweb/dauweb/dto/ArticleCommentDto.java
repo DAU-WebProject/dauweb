@@ -36,7 +36,7 @@ public record ArticleCommentDto(
                 entity.getCreatedAt()
         );
     }
-    
+
 
 
 }
