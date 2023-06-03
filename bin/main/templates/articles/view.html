@@ -1,18 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Article View</title>
+    <meta charset="UTF-8">
+    <title>Article</title>
 </head>
 <body>
-<h1>Article View</h1>
+<h1 th:text="${title}"></h1>
+<p th:text="${content}"></p>
+<p>Created at: <span th:text="${createdAt}"></span></p>
+<p>Article ID: <span th:text="${id}"></span></p>
+<p>Password: <span th:text="${password}"></span></p>
 
-<div>
-    <h2>Title: <span th:text="${title}"></span></h2>
-    <p>Content: <span th:text="${content}"></span></p>
-    <p>ID: <span th:text="${id}"></span></p>
-    <p>Created At: <span th:text="${createdAt}"></span></p>
-    <p>Password: <span th:text="${password}"></span></p>
-</div>
-
+<h2>Comments:</h2>
+<ul>
+    <li th:each="comment : ${comments}" th:text="${comment.text}"></li>
+</ul>
 </body>
 </html>

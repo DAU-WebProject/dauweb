@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { CircularProgress, Pagination, PaginationItem } from "@mui/material";
+import { CircularProgress, Pagination } from "@mui/material";
 
 function FreeBoardMain() {
   const [data, setData] = useState([]);
@@ -150,7 +150,7 @@ function FreeBoardMain() {
                     >
                       <Link
                         to="/freeBoardDetail"
-                        state={{ ...item }}
+                        state={{ id: item.id }}
                         style={{ textDecoration: "none" }}
                       >
                         <h3 style={{ color: "black" }}>{item.title}</h3>
