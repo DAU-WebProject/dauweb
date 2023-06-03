@@ -3,6 +3,7 @@ package com.dauweb.dauweb.controller;
 import java.io.IOException;
 import java.util.List;
 
+import com.dauweb.dauweb.dto.ArticleWithCommentsDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -50,8 +51,8 @@ public class ArticleController {
     }
 
     @GetMapping("/view/{id}")
-    public ArticleResponseDto articleView(@PathVariable Long id, Model model) {
-        ArticleResponseDto dto = articlesService.findById(id);
+    public ArticleWithCommentsDto articleView(@PathVariable Long id, Model model) {
+        ArticleWithCommentsDto dto = articlesService.findById(id);
 
         System.out.println(dto.getContent());
 
@@ -60,6 +61,7 @@ public class ArticleController {
         model.addAttribute("id", dto.getId());
         model.addAttribute("createdAt", dto.getCreatedAt());
         model.addAttribute("password", dto.getPassword());
+        model.addAttribute("comments", dto.getArticleCommentDtoList());
         return dto;
     }
 

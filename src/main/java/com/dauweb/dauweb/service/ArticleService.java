@@ -1,6 +1,7 @@
 package com.dauweb.dauweb.service;
 
 
+import com.dauweb.dauweb.dto.ArticleWithCommentsDto;
 import com.dauweb.dauweb.repository.ArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -61,10 +62,10 @@ public class ArticleService {
     
 
     @Transactional
-    public ArticleResponseDto findById(Long id) {
+    public ArticleWithCommentsDto findById(Long id) {
         Article entity = articleRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다."));
 
-        return new ArticleResponseDto(entity);
+        return new ArticleWithCommentsDto(entity);
     }
 }
 
