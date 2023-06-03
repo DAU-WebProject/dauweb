@@ -1,5 +1,6 @@
 package com.dauweb.dauweb.dto;
 
+import com.dauweb.dauweb.entity.Article;
 import com.dauweb.dauweb.entity.ArticleComment;
 import lombok.Getter;
 
@@ -35,6 +36,7 @@ public record ArticleCommentDto(
                 entity.getCreatedAt()
         );
     }
+    
 
 
 }
