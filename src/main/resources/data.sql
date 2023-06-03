@@ -25,3 +25,6 @@ VALUES ( 2, NULL, '네 번째 댓글', '2023-02-02 11:12:00');
 INSERT INTO article_comment ( article_id, parent_comment_id, content, created_at)
 VALUES ( 2, 1, '다섯 번째 댓글', '2023-02-02 11:13:00');
 -- 나머지 ArticleComment 데이터도 동일한 형식으로 추가
+
+-- NSERT INTO article_comment (id,article_id, parent_comment_id, content, created_at)
+-- VALUES (15,1, NULL, '6 번째 댓글', '2023-01-01 10:01:00');
